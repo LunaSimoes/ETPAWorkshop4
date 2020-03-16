@@ -5,7 +5,7 @@ var config = {
 	physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: { y: 200 },
             debug: true
         }
     },
@@ -19,9 +19,11 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+
 function init(){
 	var platforms;
 	var player;
+	var stars;
 }
 function preload(){
 	this.load.image('background','assets/sky.png');	
@@ -43,6 +45,14 @@ function create(){
 	this.physics.add.collider(player,platforms);
 	
 	cursor = this.input.keyboard.createCursorKeys();
+	
+	stars = this.physics.add.group({
+	key: 'star',
+	repeat:11,
+	setXY: {x:12, y:0, stepX:70 }
+	})
+	 this.physics.add.collider(stars, platforms);;
+	
 	
 	this.anims.create({
 		key:'left',
