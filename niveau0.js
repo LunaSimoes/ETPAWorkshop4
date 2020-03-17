@@ -28,6 +28,7 @@ function init(){
 function preload(){
 	this.load.image('background','assets/sky.png');	
 	this.load.image('sol','assets/kassos.png');
+	this.load.image('stars', 'assets/donnee.png');
 	this.load.spritesheet('perso','assets/dude.png',{frameWidth: 32, frameHeight: 48});
 }
 function create(){
@@ -46,7 +47,7 @@ function create(){
 	cursor = this.input.keyboard.createCursorKeys();
 	
 	stars = this.physics.add.group({
-		key: 'star',
+		key: 'stars',
 		repeat:0,
 		setXY: {x:500, y:0, stepX:70 }
 	})
