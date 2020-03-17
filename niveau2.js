@@ -24,6 +24,7 @@ function init(){
 	var platforms;
 	var player;
 	var stars;
+	var fantome;
 }
 function preload(){
 	this.load.image('background','assets/fondpong.png');	
@@ -32,6 +33,7 @@ function preload(){
 	this.load.image('sol3','assets/solpac3.png');
 	this.load.image('sol4','assets/solpac4.png');
 	this.load.image('stars', 'assets/donnee.png');
+	this.load.image('fantome','assets/fantome.png');
 	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
 }
 function create(){
@@ -56,7 +58,15 @@ function create(){
 	platforms.create(700,420,'sol4');
 
 
+	fantome = this.physics.add.group();
+	fantome.create(200, 300, 'fantome');
+	fantome.create(800, 300, 'fantome');
+	 this.physics.add.collider(fantome, platforms);
 
+	 
+	fantome.children.iterate(function (child){
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+	});
 	
 	player = this.physics.add.sprite(500,670,'perso');
 	player.setCollideWorldBounds(true);
