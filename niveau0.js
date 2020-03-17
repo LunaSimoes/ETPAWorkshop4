@@ -51,7 +51,12 @@ function create(){
 		repeat:0,
 		setXY: {x:500, y:0, stepX:70 }
 	})
-	 this.physics.add.collider(stars, platforms);;
+	 this.physics.add.collider(stars, platforms);
+	 this.physics.add.overlap(player,stars,collectStar, null, this);
+	 
+	 function collectStar (player, star){
+		 star.disableBody(true, true);
+	 }
 
 	
 	

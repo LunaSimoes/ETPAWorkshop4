@@ -28,7 +28,7 @@ function init(){
 function preload(){
 	this.load.image('background','assets/sky.png');	
 	this.load.image('sol','assets/kassos.png');
-	this.load.spritesheet('perso','assets/dude.png',{frameWidth: 32, frameHeight: 48});
+	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 32, frameHeight: 48});
 }
 function create(){
 	this.add.image(400,50,'background');
