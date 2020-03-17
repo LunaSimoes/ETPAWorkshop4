@@ -28,7 +28,6 @@ function init(){
 function preload(){
 	this.load.image('background','assets/sky.png');	
 	this.load.image('sol','assets/kassos.png');
-	this.load.image('stars', 'assets/donnee.png');
 	this.load.spritesheet('perso','assets/dude.png',{frameWidth: 32, frameHeight: 48});
 }
 function create(){
@@ -36,8 +35,9 @@ function create(){
 	
 	platforms = this.physics.add.staticGroup();
 	platforms.create(60,600,'sol').setScale(1).refreshBody();
-	platforms.create(470,600,'sol');
-	platforms.create(850,600,'sol');
+	platforms.create(500,500,'sol');
+	platforms.create(600,350,'sol');
+	platforms.create(700,200,'sol');
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
@@ -47,12 +47,11 @@ function create(){
 	cursor = this.input.keyboard.createCursorKeys();
 	
 	stars = this.physics.add.group({
-		key: 'stars',
-		repeat:0,
-		setXY: {x:500, y:0, stepX:70 }
+	key: 'star',
+	repeat:11,
+	setXY: {x:12, y:0, stepX:70 }
 	})
 	 this.physics.add.collider(stars, platforms);;
-
 	
 	
 	this.anims.create({
@@ -68,7 +67,6 @@ function create(){
 		frameRate: 20,
 		repeat: -1
 	});
-
 	
 }
 
@@ -94,7 +92,7 @@ function update(){
 	}
 
 	if(cursor.up.isDown && player.body.touching.down){
-		player.setVelocityY(-200);
+		player.setVelocityY(-280);
 	}
 	
 	if(cursor.down.isDown){
