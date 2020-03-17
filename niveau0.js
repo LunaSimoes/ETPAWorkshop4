@@ -47,8 +47,8 @@ function create(){
 	
 	stars = this.physics.add.group({
 		key: 'star',
-		repeat:11,
-		setXY: {x:12, y:0, stepX:70 }
+		repeat:0,
+		setXY: {x:500, y:0, stepX:70 }
 	})
 	 this.physics.add.collider(stars, platforms);;
 
