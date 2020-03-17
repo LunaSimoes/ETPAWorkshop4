@@ -113,6 +113,7 @@ function update(){
 		player.anims.play('left',true);
 		player.setVelocityX(-190);
 		player.setFlipX(false);
+		fantome.setVelocityY(-190);
 	}
 	
 	else if(cursor.right.isDown) {
