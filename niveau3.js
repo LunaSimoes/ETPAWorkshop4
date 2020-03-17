@@ -26,8 +26,8 @@ function init(){
 	var stars;
 }
 function preload(){
-	this.load.image('background','assets/sky.png');	
-	this.load.image('sol','assets/kassos.png');
+	this.load.image('background','assets/fondpong.png');	
+	this.load.image('sol','assets/solmario.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
 }
@@ -41,7 +41,6 @@ function create(){
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
-	player.setBounce(0.2);
 	this.physics.add.collider(player,platforms);
 	
 	cursor = this.input.keyboard.createCursorKeys();
