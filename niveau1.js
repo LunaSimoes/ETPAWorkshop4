@@ -25,6 +25,7 @@ function init(){
 	var player;
 	var stars;
 	var paddle;
+	
 }
 function preload(){
 	this.load.image('background','assets/fondpong.png');	
@@ -40,10 +41,19 @@ function create(){
 	platforms.create(60,600,'sol').setScale(1).refreshBody();
 	platforms.create(470,600,'sol');
 	platforms.create(850,600,'sol');
+	platforms.create(60,0,'sol');
+	platforms.create(470,0,'sol');
+	platforms.create(850,0,'sol');
 	
 	paddle = this.physics.add.group();
 	paddle.create(200, 300, 'paddle');
 	paddle.create(800, 300, 'paddle');
+	 this.physics.add.collider(paddle, platforms);
+	 
+	paddle.children.iterate(function (child){
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+	});
+
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
@@ -97,7 +107,7 @@ function update(){
 	else if(cursor.right.isDown) {
 		player.anims.play('left',true);
 		player.setVelocityX(190);
-		player.setFlipX(true);	
+		player.setFlipX(true);
 	}
 	
 	else {
