@@ -55,25 +55,27 @@ function create(){
 	paddle.create(200, 300, 'paddle')
 	paddle.create(800, 300, 'paddle')
 	 this.physics.add.collider(paddle, platforms);
+	 paddle.setVelocityY(150);
 	 
 
 	 
 	paddle.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1.2));
 	});
 	
 	
 
 monster = this.physics.add.group();
-	monster.create(200, 300, 'monster');
+	monster.create(250, 300, 'monster');
 	 this.physics.add.collider(monster, platforms);
 	 this.physics.add.collider(monster, paddle);
-	 monster.setVelocityX(150);
+	 monster.setVelocityX(250);
+	 monster.setVelocityY(150);
 
 	 
 	monster.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1,5));
-		child.setBounceX(Phaser.Math.FloatBetween(1, 3));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
+		child.setBounceX(Phaser.Math.FloatBetween(2, 2));
 	});
 	
 	
