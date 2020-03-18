@@ -72,7 +72,8 @@ monster = this.physics.add.group();
 
 	 
 	monster.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1,5));
+		child.setBounceX(Phaser.Math.FloatBetween(1, 3));
 	});
 	
 	
