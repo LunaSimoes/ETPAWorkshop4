@@ -55,7 +55,7 @@ function create(){
 	paddle.create(200, 300, 'paddle')
 	paddle.create(800, 300, 'paddle')
 	 this.physics.add.collider(paddle, platforms);
-	 paddle.setVelocityY(150);
+	 paddle.setVelocityY(140);
 	 
 
 	 
@@ -66,11 +66,10 @@ function create(){
 	
 
 monster = this.physics.add.group();
-	monster.create(250, 300, 'monster');
+	monster.create(300, 200, 'monster');
 	 this.physics.add.collider(monster, platforms);
 	 this.physics.add.collider(monster, paddle);
 	 monster.setVelocityX(250);
-	 monster.setVelocityY(150);
 
 	 
 	monster.children.iterate(function (child){
