@@ -5,7 +5,7 @@ var config = {
 	physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 },
+            gravity: { y: 0 },
             debug: true
         }
     },
@@ -24,31 +24,43 @@ function init(){
 	var platforms;
 	var player;
 	var stars;
-	var bombs;
+	var monster;
 }
 function preload(){
-	this.load.image('background','assets/fondpong.png');	
-	this.load.image('sol','assets/solma.png');
+	this.load.image('background','assets/fondzelda.png');	
+	this.load.image('sol','assets/montagne.png');
+	this.load.image('sol2','assets/forest.png');
+	this.load.image('sol3','assets/solzelda.png');
 	this.load.image('stars', 'assets/donnee.png');
-	this.load.image('bombs', 'assets/bombs.png');
+	this.load.image('monster','assets/monster.png');
 	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
 }
 function create(){
 	this.add.image(400,50,'background');
 	
 	platforms = this.physics.add.staticGroup();
-	platforms.create(60,730,'sol').setScale(1).refreshBody();
-	platforms.create(470,730,'sol');
-	platforms.create(850,730,'sol');
-	platforms.create(0,630,'sol');
-	platforms.create(450,630,'sol');
-	platforms.create(1000,530,'sol');
-	platforms.create(650,530,'sol');
-	platforms.create(450,430,'sol');
-	platforms.create(550,330,'sol');
-	platforms.create(450,230,'sol');
+	platforms.create(250,50,'sol').setScale(1).refreshBody();
+	platforms.create(-80,150,'sol')
+	platforms.create(-150,300,'sol')
+	platforms.create(550,700,'sol3');
+	platforms.create(-150,650,'sol');
+	platforms.create(500,400,'sol2');
+	platforms.create(1200,50,'sol3');
+
 	
-	player = this.physics.add.sprite(20,680,'perso');
+
+
+	monster = this.physics.add.group();
+	monster.create(200, 300, 'monster');
+	monster.create(800, 300, 'monster');
+	 this.physics.add.collider(monster, platforms);
+
+	 
+	monster.children.iterate(function (child){
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+	});
+	
+	player = this.physics.add.sprite(250,160,'perso');
 	player.setCollideWorldBounds(true);
 	this.physics.add.collider(player,platforms);
 	
@@ -57,7 +69,7 @@ function create(){
 	stars = this.physics.add.group({
 		key: 'stars',
 		repeat:0,
-		setXY: {x:500, y:0, stepX:70 }
+		setXY: {x:900, y:600, stepX:70 }
 	})
 	 this.physics.add.collider(stars, platforms);
 	 this.physics.add.overlap(player,stars,collectStar, null, this);
@@ -65,53 +77,7 @@ function create(){
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
 	 }
-	 
-	 //bombs
-	 
-	 bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:20, y:-600, stepX:400 }
-	})
-	 this.physics.add.collider(bombs, player);
-	 
-	 bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:40, y:-1000, stepX:300 }
-	})
-	 this.physics.add.collider(bombs, player);
-	 
-	 bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:40, y:-2000, stepX:250 }
-	})
-	 this.physics.add.collider(bombs, player);
-	 
-	  bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:60, y:-3000, stepX:300 }
-	})
-	 this.physics.add.collider(bombs, player);
-	 
-	  bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:60, y:-6000, stepX:600 }
-	})
-	 this.physics.add.collider(bombs, player);
-	 
-	  bombs = this.physics.add.group({
-		key: 'bombs',
-		repeat:2,
-		setXY: {x:40, y:-8000, stepX:250 }
-	})
-	 this.physics.add.collider(bombs, player);
-	
-	 
-	//fin bombs
+
 	
 	
 	this.anims.create({
@@ -139,12 +105,14 @@ function update(){
 		player.anims.play('left',true);
 		player.setVelocityX(-190);
 		player.setFlipX(false);
+		monster.setVelocityY(-150);
 	}
 	
 	else if(cursor.right.isDown) {
 		player.anims.play('left',true);
 		player.setVelocityX(190);
-		player.setFlipX(true);	
+		player.setFlipX(true);
+		monster.setVelocityY(150);		
 	}
 	
 	else {
@@ -152,11 +120,11 @@ function update(){
 		player.setVelocityX(0);
 	}
 
-	if(cursor.up.isDown && player.body.touching.down){
+	if(cursor.up.isDown){
 		player.setVelocityY(-200);
 	}
 	
 	if(cursor.down.isDown){
-		player.setVelocityY(400);
+		player.setVelocityY(200);
 	}
 }
