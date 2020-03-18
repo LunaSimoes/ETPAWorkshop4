@@ -31,6 +31,7 @@ function preload(){
 	this.load.image('sol','assets/soltir.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('plate', 'assets/platform.png');
+	this.load.image('arme', 'assets/arme.png');
 	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
 }
 function create(){
@@ -46,6 +47,7 @@ function create(){
 	platforms.create(500,540,'plate');
 	platforms.create(750,440,'plate');
 	platforms.create(800,440,'plate');
+	platforms.create(600,340,'plate');
 	
 	player = this.physics.add.sprite(20,680,'perso');
 	player.setCollideWorldBounds(true);
@@ -63,6 +65,21 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+	 }
+	 
+	 
+	 //Lorsqu'on ramasse l'arme on peut tirer
+	 
+	 arme = this.physics.add.group({
+		key: 'arme',
+		repeat:0,
+		setXY: {x:950, y:600, stepX:70 }
+	})
+	 this.physics.add.collider(arme, platforms);
+	 this.physics.add.overlap(player,arme,collectarme, null, this);
+	 
+	 function collectarme (player, arme){
+		 arme.disableBody(true, true);
 	 }
 	 
 
