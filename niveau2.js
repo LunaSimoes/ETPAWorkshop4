@@ -63,8 +63,10 @@ function create(){
 //fantome haut en bas
 
 	fantome = this.physics.add.group();
-	fantome.create(200, 300, 'fantome');
+	fantome.create(200, 600, 'fantome');
 	fantome.create(800, 300, 'fantome');
+	fantome.create(350, 300, 'fantome');
+	fantome.create(650, 500, 'fantome');
 	 this.physics.add.collider(fantome, platforms);
 	 fantome.setVelocityY(-150);
 
@@ -77,7 +79,7 @@ function create(){
 //fantome horizontale
 
 	fantome2 = this.physics.add.group();
-	fantome2.create(200, 550, 'fantome');
+	fantome2.create(100, 550, 'fantome');
 	fantome2.create(800, 550, 'fantome');
 	 this.physics.add.collider(fantome2, platforms);
 	 fantome2.setVelocityX(-150);
