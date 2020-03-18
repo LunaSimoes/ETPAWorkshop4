@@ -56,7 +56,11 @@ function create(){
 	platforms.create(1100,200,'sol2');
 	platforms.create(300,420,'sol4');
 	platforms.create(700,420,'sol4');
+	platforms.create(50,620,'sol4');
+	platforms.create(950,620,'sol4');
 
+
+//fantome haut en bas
 
 	fantome = this.physics.add.group();
 	fantome.create(200, 300, 'fantome');
@@ -66,8 +70,24 @@ function create(){
 
 	 
 	fantome.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1.1));
 	});
+	
+	
+//fantome horizontale
+
+	fantome2 = this.physics.add.group();
+	fantome2.create(200, 550, 'fantome');
+	fantome2.create(800, 550, 'fantome');
+	 this.physics.add.collider(fantome2, platforms);
+	 fantome2.setVelocityX(-150);
+
+	 
+	fantome2.children.iterate(function (child){
+		child.setBounceX(Phaser.Math.FloatBetween(1, 1.1));
+	});
+	
+// joueur
 	
 	player = this.physics.add.sprite(500,670,'perso');
 	player.setCollideWorldBounds(true);
