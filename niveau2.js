@@ -62,10 +62,11 @@ function create(){
 	fantome.create(200, 300, 'fantome');
 	fantome.create(800, 300, 'fantome');
 	 this.physics.add.collider(fantome, platforms);
+	 fantome.setVelocityY(-150);
 
 	 
 	fantome.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
 	});
 	
 	player = this.physics.add.sprite(500,670,'perso');
@@ -113,23 +114,23 @@ function update(){
 		player.anims.play('left',true);
 		player.setVelocityX(-190);
 		player.setFlipX(false);
-		fantome.setVelocityY(-150);
 	}
 	
 	else if(cursor.right.isDown) {
 		player.anims.play('left',true);
 		player.setVelocityX(190);
-		player.setFlipX(true);
-		fantome.setVelocityY(150);		
+		player.setFlipX(true);	
 	}
 	
 	else {
 		player.anims.play('stop',true);
 		player.setVelocityX(0);
+		player.setVelocityY(0);
 	}
 
 	if(cursor.up.isDown){
 		player.setVelocityY(-200);
+
 	}
 	
 	if(cursor.down.isDown){

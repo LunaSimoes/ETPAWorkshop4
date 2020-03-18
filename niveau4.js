@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: true
+            debug: trues
         }
     },
 	scene: {
@@ -118,6 +118,7 @@ function update(){
 	else {
 		player.anims.play('stop',true);
 		player.setVelocityX(0);
+		player.setVelocityY(0);
 	}
 
 	if(cursor.up.isDown){
