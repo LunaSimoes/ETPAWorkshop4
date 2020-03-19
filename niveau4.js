@@ -1,7 +1,10 @@
+let gameScene = new Phaser.Scene('Zelda');
+
 var config = {
 	type: Phaser.AUTO,
 	width: 1024 ,
 	height: 728,
+	scene: gameScene,
 	physics: {
         default: 'arcade',
         arcade: {
@@ -25,6 +28,7 @@ function init(){
 	var player;
 	var stars;
 	var monster;
+	var gameOver = false;
 }
 function preload(){
 	this.load.image('background','assets/fondzelda.png');	
@@ -46,26 +50,47 @@ function create(){
 	platforms.create(-150,650,'sol');
 	platforms.create(500,400,'sol2');
 	platforms.create(1200,50,'sol3');
-
 	
 
-
-	monster = this.physics.add.group();
-	monster.create(200, 300, 'monster');
-	monster.create(800, 300, 'monster');
-	 this.physics.add.collider(monster, platforms);
-	 monster.setVelocityY(150);	
-
-	 
-	monster.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
-	});
-	
+//Player
 	player = this.physics.add.sprite(250,160,'perso');
 	player.setCollideWorldBounds(true);
 	this.physics.add.collider(player,platforms);
 	
 	cursor = this.input.keyboard.createCursorKeys();
+
+//Monster
+ 
+	monster = this.physics.add.group({
+    key: 'monster',
+    repeat: 1,
+    setXY: {
+      x: 250,
+      y: 250,
+      stepX: 500,
+      stepY: 200
+    }
+  });
+  	monster.setVelocityY(Phaser.Math.FloatBetween(100, 150));
+	
+	monster.children.iterate(function (child){
+		child.setBounceY(1);
+	});
+	
+	this.physics.add.collider(monster, platforms);
+	this.physics.add.collider(monster, [player], hitmonster, null, this);
+	
+		//toucher
+	
+	function hitmonster (player, monster){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
+
+	
+	
+//STARS
 	
 	stars = this.physics.add.group({
 		key: 'stars',
@@ -77,11 +102,10 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
-	 }
-
-	
-	
-	this.anims.create({
+	 };
+	 
+	 
+	 this.anims.create({
 		key:'left',
 		frames: this.anims.generateFrameNumbers('perso', {start: 0, end: 3}),
 		frameRate: 10,
@@ -95,8 +119,8 @@ function create(){
 		repeat: -1
 	});
 
-	
 }
+
 
 function update(){
 	
@@ -127,4 +151,6 @@ function update(){
 	if(cursor.down.isDown){
 		player.setVelocityY(200);
 	}
+
 }
+

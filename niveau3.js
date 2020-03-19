@@ -54,6 +54,8 @@ function create(){
 	
 	cursor = this.input.keyboard.createCursorKeys();
 	
+	//star
+	
 	stars = this.physics.add.group({
 		key: 'stars',
 		repeat:0,
