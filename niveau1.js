@@ -36,7 +36,7 @@ function preload(){
 	this.load.image('paddle','assets/paddle.png');
 	this.load.image('monster','assets/monster.png');
 	this.load.image('blocus','assets/black2.png');
-	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
+	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
 	this.add.image(400,50,'background');

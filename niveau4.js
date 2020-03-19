@@ -37,7 +37,8 @@ function preload(){
 	this.load.image('sol3','assets/solzelda.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('monster','assets/monster.png');
-	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
+	this.load.image('mur','assets/murzelda.png');
+	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
 	this.add.image(400,50,'background');
@@ -50,6 +51,7 @@ function create(){
 	platforms.create(-150,650,'sol');
 	platforms.create(500,400,'sol2');
 	platforms.create(1200,50,'sol3');
+	platforms.create(1000,500,'mur');
 	
 
 //Player
@@ -118,6 +120,7 @@ function create(){
 		frameRate: 20,
 		repeat: -1
 	});
+	
 
 }
 

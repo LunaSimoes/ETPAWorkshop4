@@ -31,7 +31,7 @@ function preload(){
 	this.load.image('sol','assets/soltir.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('plate', 'assets/platform.png');
-	this.load.spritesheet('perso','assets/robott.png',{frameWidth: 31, frameHeight: 47});
+	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
 	this.add.image(400,50,'background');
