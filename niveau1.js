@@ -34,7 +34,7 @@ function preload(){
 	this.load.image('sol','assets/solpong.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('paddle','assets/paddle.png');
-	this.load.image('monster','assets/monster.png');
+	this.load.image('balle','assets/balle.png');
 	this.load.image('blocus','assets/black2.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
@@ -86,22 +86,22 @@ function create(){
 	};
 	
 	
-	monster = this.physics.add.group();
-	monster.create(600, 250, 'monster');
-	 this.physics.add.collider(monster, platforms);
-	 this.physics.add.collider(monster, paddle);
-	 monster.setVelocityX(270);
+	balle = this.physics.add.group();
+	balle.create(600, 250, 'balle');
+	 this.physics.add.collider(balle, platforms);
+	 this.physics.add.collider(balle, paddle);
+	 balle.setVelocityX(270);
 
 	 
-	monster.children.iterate(function (child){
+	balle.children.iterate(function (child){
 		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
 		child.setBounceX(Phaser.Math.FloatBetween(2, 2));
 	});
-	this.physics.add.collider(monster, [player], hitmonster, null, this);
+	this.physics.add.collider(balle, [player], hitmonster, null, this);
 	
 	//toucher
 	
-	function hitmonster (player, monster){
+	function hitmonster (player, balle){
 		
 		this.physics.pause();
 		player.setTint(0xff0000);
