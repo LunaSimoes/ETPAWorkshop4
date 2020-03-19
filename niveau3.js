@@ -75,42 +75,50 @@ function create(){
 		repeat:2,
 		setXY: {x:20, y:-600, stepX:400 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
 	 
 	 bombs = this.physics.add.group({
 		key: 'bombs',
 		repeat:2,
 		setXY: {x:40, y:-1000, stepX:300 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
 	 
 	 bombs = this.physics.add.group({
 		key: 'bombs',
 		repeat:2,
 		setXY: {x:40, y:-2000, stepX:250 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
 	 
 	  bombs = this.physics.add.group({
 		key: 'bombs',
 		repeat:2,
 		setXY: {x:60, y:-3000, stepX:300 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
 	 
 	  bombs = this.physics.add.group({
 		key: 'bombs',
 		repeat:2,
 		setXY: {x:60, y:-6000, stepX:600 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
 	 
 	  bombs = this.physics.add.group({
 		key: 'bombs',
 		repeat:2,
 		setXY: {x:40, y:-8000, stepX:250 }
 	})
-	 this.physics.add.collider(bombs, player);
+	 this.physics.add.collider(bombs, [player], hitbombs, null, this);
+	
+		//toucher
+	
+	function hitbombs (player, bombs){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
 	
 	 
 	//fin bombs
