@@ -40,12 +40,10 @@ function create(){
 	platforms.create(60,730,'sol').setScale(1).refreshBody();
 	platforms.create(470,730,'sol');
 	platforms.create(850,730,'sol');
-	platforms.create(0,630,'sol');
 	platforms.create(450,630,'sol');
-	platforms.create(1000,530,'sol');
 	platforms.create(650,530,'sol');
 	platforms.create(450,430,'sol');
-	platforms.create(550,330,'sol');
+	platforms.create(650,330,'sol');
 	platforms.create(450,230,'sol');
 	
 	player = this.physics.add.sprite(20,680,'perso');
