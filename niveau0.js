@@ -26,8 +26,8 @@ function init(){
 	var stars;
 }
 function preload(){
-	this.load.image('background','assets/sky.png');	
-	this.load.image('sol','assets/kassos.png');
+	this.load.image('background','assets/fond.png');	
+	this.load.image('sol','assets/platdonnee.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
@@ -35,9 +35,10 @@ function create(){
 	this.add.image(400,50,'background');
 	
 	platforms = this.physics.add.staticGroup();
-	platforms.create(60,600,'sol').setScale(1).refreshBody();
-	platforms.create(470,600,'sol');
-	platforms.create(850,600,'sol');
+	platforms.create(60,700,'sol').setScale(1).refreshBody();
+	platforms.create(600,700,'sol').setScale(1).refreshBody();
+	platforms.create(1150,700,'sol').setScale(1).refreshBody();
+
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
@@ -48,7 +49,7 @@ function create(){
 	stars = this.physics.add.group({
 		key: 'stars',
 		repeat:0,
-		setXY: {x:500, y:0, stepX:70 }
+		setXY: {x:1000, y:0, stepX:70 }
 	})
 	 this.physics.add.collider(stars, platforms);
 	 this.physics.add.overlap(player,stars,collectStar, null, this);
