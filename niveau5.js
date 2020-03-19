@@ -62,7 +62,7 @@ function create(){
 	platforms.create(60,-10,'sol');
 	platforms.create(1060,-10,'sol');
 	
-	player = this.physics.add.sprite(20,680,'perso');
+	player = this.physics.add.sprite(40,685,'perso');
 	player.setCollideWorldBounds(true);
 	this.physics.add.collider(player,platforms);
 	
@@ -100,7 +100,7 @@ function create(){
 	stars = this.physics.add.group({
 		key: 'stars',
 		repeat:0,
-		setXY: {x:950, y:0, stepX:70 }
+		setXY: {x:950, y:50, stepX:0 }
 	})
 	 this.physics.add.collider(stars, platforms);
 	 this.physics.add.overlap(player,stars,collectStar, null, this);
@@ -115,7 +115,7 @@ function create(){
 	 arme = this.physics.add.group({
 		key: 'arme',
 		repeat:0,
-		setXY: {x:950, y:600, stepX:70 }
+		setXY: {x:950, y:680, stepX:70 }
 	})
 	 this.physics.add.collider(arme, platforms);
 	 this.physics.add.overlap(player,arme,collectarme, null, this);
