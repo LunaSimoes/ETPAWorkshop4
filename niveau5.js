@@ -25,6 +25,7 @@ function init(){
 	var player;
 	var stars;
 	var bombs;
+	var monster;
 }
 function preload(){
 	this.load.image('background','assets/fondpong.png');	
@@ -33,6 +34,8 @@ function preload(){
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('plate', 'assets/platform.png');
 	this.load.image('monster','assets/monster.png');
+	this.load.image('balles','assets/balles.png');
+	this.load.image('tirE','assets/tirE.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 	this.load.image('arme', 'assets/arme.png');
 }
@@ -54,13 +57,16 @@ function create(){
 	platforms.create(575,200,'plate');
 	platforms.create(400,150,'plate');
 	platforms.create(450,150,'plate');
-	platforms.create(50,280,'plate');
-	platforms.create(150,200,'plate');
+	platforms.create(50,250,'plate');
+	platforms.create(160,150,'plate');
 	platforms.create(380,280,'plate');
 	platforms.create(-30,500,'mur');
 	platforms.create(1050,500,'mur');
 	platforms.create(60,-10,'sol');
 	platforms.create(1060,-10,'sol');
+	
+	tirE = this.physics.add.staticGroup();
+	tirE.create(920,550,'tirE').setScale(1).refreshBody();
 	
 	player = this.physics.add.sprite(40,685,'perso');
 	player.setCollideWorldBounds(true);
