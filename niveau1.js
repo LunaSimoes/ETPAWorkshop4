@@ -51,21 +51,42 @@ function create(){
 	platforms.create(860,250,'blocus');
 	platforms.create(140,250,'blocus');
 	
+
+//player
+
+	player = this.physics.add.sprite(100,450,'perso');
+	player.setCollideWorldBounds(true);
+	this.physics.add.collider(player,platforms);
+	
+	
+	cursor = this.input.keyboard.createCursorKeys();
+	
+	
+//paddle
+	
 	paddle = this.physics.add.group();
 	paddle.create(200, 150, 'paddle')
 	paddle.create(800, 150, 'paddle')
 	 this.physics.add.collider(paddle, platforms);
 	 paddle.setVelocityY(100);
 	 
-
 	 
 	paddle.children.iterate(function (child){
 		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
 	});
 	
+	this.physics.add.collider(paddle, [player], hitpaddle, null, this);
 	
-
-monster = this.physics.add.group();
+		//toucher
+	
+	function hitpaddle (player, paddle){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
+	
+	
+	monster = this.physics.add.group();
 	monster.create(600, 250, 'monster');
 	 this.physics.add.collider(monster, platforms);
 	 this.physics.add.collider(monster, paddle);
@@ -76,14 +97,15 @@ monster = this.physics.add.group();
 		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
 		child.setBounceX(Phaser.Math.FloatBetween(2, 2));
 	});
+	this.physics.add.collider(monster, [player], hitmonster, null, this);
 	
+	//toucher
 	
-	
-	player = this.physics.add.sprite(100,450,'perso');
-	player.setCollideWorldBounds(true);
-	this.physics.add.collider(player,platforms);
-	
-	cursor = this.input.keyboard.createCursorKeys();
+	function hitmonster (player, monster){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
 	
 	
 	stars = this.physics.add.group({
