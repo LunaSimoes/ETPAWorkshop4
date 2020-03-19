@@ -29,15 +29,27 @@ function preload(){
 	this.load.image('background','assets/fond.png');	
 	this.load.image('sol','assets/platdonnee.png');
 	this.load.image('stars', 'assets/donnee.png');
+	this.load.image('touche', 'assets/touche.png');
+	this.load.image('touchesaut', 'assets/touchesaut.png');
+	this.load.image('recolte', 'assets/recolte.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
-	this.add.image(400,50,'background');
+	this.add.image(515,50,'background');
 	
 	platforms = this.physics.add.staticGroup();
-	platforms.create(60,700,'sol').setScale(1).refreshBody();
-	platforms.create(600,700,'sol').setScale(1).refreshBody();
-	platforms.create(1150,700,'sol').setScale(1).refreshBody();
+	platforms.create(-100,700,'sol').setScale(1).refreshBody();
+	platforms.create(380,700,'sol').setScale(1).refreshBody();
+	platforms.create(1000,700,'sol').setScale(1).refreshBody();
+	
+	touche = this.physics.add.staticGroup();
+	touche.create(170,350,'touche').setScale(1).refreshBody();
+	
+	touchesaut = this.physics.add.staticGroup();
+	touchesaut.create(620,350,'touchesaut').setScale(1).refreshBody();
+	
+	recolte = this.physics.add.staticGroup();
+	recolte.create(920,350,'recolte').setScale(1).refreshBody();
 
 	
 	player = this.physics.add.sprite(100,450,'perso');
