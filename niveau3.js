@@ -25,12 +25,14 @@ function init(){
 	var player;
 	var stars;
 	var bombs;
+	var baril;
 }
 function preload(){
 	this.load.image('background','assets/fondpong.png');	
 	this.load.image('sol','assets/solma.png');
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('bombs', 'assets/bombs.png');
+	this.load.image('baril', 'assets/baril.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -45,6 +47,12 @@ function create(){
 	platforms.create(450,430,'sol');
 	platforms.create(650,330,'sol');
 	platforms.create(450,230,'sol');
+	
+	baril = this.physics.add.group();
+	baril.create(90,100,'baril');
+	baril.create(90,10,'baril');
+	this.physics.add.collider(baril,platforms);
+	this.physics.add.collider(baril,[baril]);
 	
 	player = this.physics.add.sprite(20,680,'perso');
 	player.setCollideWorldBounds(true);
