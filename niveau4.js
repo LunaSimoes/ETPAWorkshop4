@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: trues
+            debug: true
         }
     },
 	scene: {
@@ -54,10 +54,11 @@ function create(){
 	monster.create(200, 300, 'monster');
 	monster.create(800, 300, 'monster');
 	 this.physics.add.collider(monster, platforms);
+	 monster.setVelocityY(150);	
 
 	 
 	monster.children.iterate(function (child){
-		child.setBounceY(Phaser.Math.FloatBetween(1, 1.3));
+		child.setBounceY(Phaser.Math.FloatBetween(1, 1));
 	});
 	
 	player = this.physics.add.sprite(250,160,'perso');
@@ -105,14 +106,12 @@ function update(){
 		player.anims.play('left',true);
 		player.setVelocityX(-190);
 		player.setFlipX(false);
-		monster.setVelocityY(-150);
 	}
 	
 	else if(cursor.right.isDown) {
 		player.anims.play('left',true);
 		player.setVelocityX(190);
-		player.setFlipX(true);
-		monster.setVelocityY(150);		
+		player.setFlipX(true);	
 	}
 	
 	else {
