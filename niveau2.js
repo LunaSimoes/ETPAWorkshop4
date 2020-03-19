@@ -60,6 +60,16 @@ function create(){
 	platforms.create(950,620,'sol4');
 
 
+// joueur
+	
+	player = this.physics.add.sprite(500,670,'perso');
+	player.setCollideWorldBounds(true);
+	this.physics.add.collider(player,platforms);
+	
+	cursor = this.input.keyboard.createCursorKeys();
+	
+	
+
 //fantome haut en bas
 
 	fantome = this.physics.add.group();
@@ -75,6 +85,16 @@ function create(){
 		child.setBounceY(Phaser.Math.FloatBetween(1, 1.1));
 	});
 	
+	this.physics.add.collider(fantome, [player], hitfantome, null, this);
+	
+	//toucher
+	
+	function hitfantome (player, fantome){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
+	
 	
 //fantome horizontale
 
@@ -89,13 +109,18 @@ function create(){
 		child.setBounceX(Phaser.Math.FloatBetween(1, 1.1));
 	});
 	
-// joueur
+	this.physics.add.collider(fantome2, [player], hitfantome2, null, this);
 	
-	player = this.physics.add.sprite(500,670,'perso');
-	player.setCollideWorldBounds(true);
-	this.physics.add.collider(player,platforms);
+	//toucher
 	
-	cursor = this.input.keyboard.createCursorKeys();
+	function hitfantome2 (player, fantome2){
+		
+		this.physics.pause();
+		player.setTint(0xff0000);
+	};
+
+
+	//Star
 	
 	stars = this.physics.add.group({
 		key: 'stars',
