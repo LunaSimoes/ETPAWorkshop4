@@ -24,10 +24,16 @@ function init(){
 	var platforms;
 	var player;
 	var stars;
+<<<<<<< Updated upstream
 	var text1;
 	var text2;
 	var text3;
 	var text4;
+=======
+	var tutoText;
+	var tutoText2;
+	var tutoText3;
+>>>>>>> Stashed changes
 }
 function preload(){
 	this.load.image('background','assets/fond.png');	
@@ -72,6 +78,17 @@ function create(){
 	this.physics.add.collider(player,platforms);
 	
 	cursor = this.input.keyboard.createCursorKeys();
+	
+	
+	//explications
+	
+	
+	tutoText = this.add.text(16, 50, '"Bonjour Programme 6.4.8.', {fontSize: '18px', fill:'#FFF'});
+	tutoText2 = this.add.text(16, 100,'Vous etes charge de retrouver les fragments de code manquant à notre projet. L un de ces fragmants se trouve au fond de cette salle.' , {fontSize: '18px', fill:'#FFF'});
+	tutoText3 = this.add.text(16,150, 'Veillez a ne pas mourir lors de votre mission."', {fontSize: '18px', fill:'#FFF'});
+	
+	
+	//star
 	
 	stars = this.physics.add.group({
 		key: 'stars',
