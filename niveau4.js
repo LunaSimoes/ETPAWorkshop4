@@ -28,7 +28,15 @@ function init(){
 	var player;
 	var stars;
 	var monster;
+	var cursor;
+	var touch;
+	var bombs;
 	var gameOver = false;
+	this.boom = 0;
+	this.donnee = 3;
+	var boomText;
+	var donneeText;
+
 }
 function preload(){
 	this.load.image('background','assets/fondzelda.png');	
@@ -38,6 +46,8 @@ function preload(){
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('monster','assets/monster.png');
 	this.load.image('mur','assets/murzelda.png');
+	this.load.image('menu','assets/menu.png');
+	this.load.image('bombs','assets/bombs.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -60,6 +70,7 @@ function create(){
 	this.physics.add.collider(player,platforms);
 	
 	cursor = this.input.keyboard.createCursorKeys();
+	//touch = this.input.keyboard.addKey('E');
 
 //Monster
  
@@ -89,8 +100,31 @@ function create(){
 		this.physics.pause();
 		player.setTint(0xff0000);
 	};
+	
+	
+//Inventory
+
+menu = this.physics.add.staticGroup();
+menu.create(510,50,'menu');
+boomText = this.add.text(16, 50, 'Bombes = 0', {fontSize: '20px', fill:'#FFF'});
+donneeText = this.add.text(16, 16, 'Donnees = 3', {fontSize: '20px', fill:'#FFF'});
 
 	
+//Bombs
+	
+	bombs = this.physics.add.group({
+		key: 'bombs',
+		repeat:0,
+		setXY: {x:900, y:300, stepX:70 }
+	})
+	 this.physics.add.collider(bombs, platforms);
+	 this.physics.add.overlap(player,bombs,collectBombs, null, this);
+	 
+	 function collectBombs (player, bombs){
+		 bombs.disableBody(true, true);
+		 this.boom += 1;
+		 boomText.setText('Bombes: ' + this.boom);
+	 };
 	
 //STARS
 	
@@ -104,6 +138,8 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+		 this.donnee += 1;
+		 donneeText.setText('Donnees: ' + this.donnee);
 	 };
 	 
 	 
@@ -154,6 +190,10 @@ function update(){
 	if(cursor.down.isDown){
 		player.setVelocityY(200);
 	}
+	
+	//if(touch.E.isDown){
+		//menu.disableBody(true, true);
+	//}
 
 }
 

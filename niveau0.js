@@ -24,6 +24,10 @@ function init(){
 	var platforms;
 	var player;
 	var stars;
+	var text1;
+	var text2;
+	var text3;
+	var text4;
 }
 function preload(){
 	this.load.image('background','assets/fond.png');	
@@ -42,6 +46,15 @@ function create(){
 	platforms.create(380,700,'sol').setScale(1).refreshBody();
 	platforms.create(1000,700,'sol').setScale(1).refreshBody();
 	
+	
+	//consigne
+	text1 = this.add.text(16, 50, '"Bonjour Programme 6.4.8.', {fontSize: '20px', fill:'#FFF'});
+	text2 = this.add.text(16, 100, 'Vous etes charge de retrouver les fragments de code manquant a notre projet.', {fontSize: '20px', fill:'#FFF'});
+	text3 = this.add.text(16, 150, 'L un de ces fragments se trouve au fond de cette salle.', {fontSize: '20px', fill:'#FFF'});
+	text4 = this.add.text(16, 200, 'Recoltez toutes les donnees et vous pourrez rentrer."', {fontSize: '20px', fill:'#FFF'});
+	
+	//tuto
+	
 	touche = this.physics.add.staticGroup();
 	touche.create(170,350,'touche').setScale(1).refreshBody();
 	
@@ -51,6 +64,8 @@ function create(){
 	recolte = this.physics.add.staticGroup();
 	recolte.create(920,350,'recolte').setScale(1).refreshBody();
 
+
+//player
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
