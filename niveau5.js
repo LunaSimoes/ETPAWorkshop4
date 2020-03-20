@@ -36,6 +36,7 @@ function preload(){
 	this.load.image('monster','assets/monster.png');
 	this.load.image('balles','assets/balles.png');
 	this.load.image('tirE','assets/tirE.png');
+	this.load.image('finished', 'assets/finished.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 	this.load.image('arme', 'assets/arme.png');
 }
@@ -103,6 +104,8 @@ function create(){
 		player.setTint(0xff0000);
 	};
 	
+	//star
+	
 	stars = this.physics.add.group({
 		key: 'stars',
 		repeat:0,
@@ -113,6 +116,9 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+		 
+		finished = this.physics.add.staticGroup();
+		finished.create(500,300,'finished')
 	 }
 	 
 	 

@@ -33,7 +33,8 @@ function preload(){
 	this.load.image('sol3','assets/solpac3.png');
 	this.load.image('sol4','assets/solpac4.png');
 	this.load.image('stars', 'assets/donnee.png');
-	this.load.image('fantome','assets/fantome.png');
+	this.load.image('fantome','assets/fantome.png')
+	this.load.image('finished', 'assets/finished.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -132,6 +133,9 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+		 
+		finished = this.physics.add.staticGroup();
+		finished.create(500,300,'finished')
 	 }
 
 	

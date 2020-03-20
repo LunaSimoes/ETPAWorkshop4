@@ -33,6 +33,7 @@ function preload(){
 	this.load.image('stars', 'assets/donnee.png');
 	this.load.image('bombs', 'assets/bombs.png');
 	this.load.image('baril', 'assets/baril.png');
+	this.load.image('finished', 'assets/finished.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -72,6 +73,9 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+		 
+		finished = this.physics.add.staticGroup();
+		finished.create(500,300,'finished')
 	 }
 	 
 	 //bombs

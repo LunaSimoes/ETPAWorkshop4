@@ -37,6 +37,7 @@ function preload(){
 	this.load.image('touche', 'assets/touche.png');
 	this.load.image('touchesaut', 'assets/touchesaut.png');
 	this.load.image('recolte', 'assets/recolte.png');
+	this.load.image('finished', 'assets/finished.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -87,6 +88,9 @@ function create(){
 	 
 	 function collectStar (player, star){
 		 star.disableBody(true, true);
+		 
+		finished = this.physics.add.staticGroup();
+		finished.create(500,300,'finished')
 	 }
 
 	

@@ -48,6 +48,7 @@ function preload(){
 	this.load.image('mur','assets/murzelda.png');
 	this.load.image('menu','assets/menu.png');
 	this.load.image('bombs','assets/bombs.png');
+	this.load.image('finished', 'assets/finished.png');
 	this.load.spritesheet('perso','assets/robot.png',{frameWidth: 31.5, frameHeight: 40});
 }
 function create(){
@@ -140,6 +141,9 @@ donneeText = this.add.text(16, 16, 'Donnees = 3', {fontSize: '20px', fill:'#FFF'
 		 star.disableBody(true, true);
 		 this.donnee += 1;
 		 donneeText.setText('Donnees: ' + this.donnee);
+		 
+		finished = this.physics.add.staticGroup();
+		finished.create(500,300,'finished')
 	 };
 	 
 	 
